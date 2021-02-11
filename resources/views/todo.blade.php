@@ -13,27 +13,26 @@
 </head>
 <body class="$blue">
   <h1>My <small class="text-muted">todos</small></h1>
-  <table class="table table-dark table-striped container-sm">
-    <thead>
+  <table class="table table-sm word-wrap: break-word;min-width: 160px;max-width: 160px;">
+    <thead class="table-dark">
       <tr>
         <th scope="col">Id</th>
-        <th scope="col">Name</th>
         <th scope="col">Task</th>
+        {{-- <th scope="col">Name</th> --}}
       </tr>
     </thead>
     <tbody>
       @foreach ($tasks as $task)
       <tr>
-        <th scope="row">1</th>
         <td>
-          {{ $task ['id'] }}
+          {{ $task->id }}
         </td>
         <td>
-          {{ $task ['users'] }}
+          {{ $task->task }}
         </td>
-        <td>
-          {{ $task ['task'] }}
-        </td>
+        {{-- <td>
+          {{ $task->name }}
+        </td> --}}
       </tr>
       @endforeach
     </tbody>
