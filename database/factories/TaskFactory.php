@@ -23,7 +23,7 @@ class TaskFactory extends Factory
     public function definition()
     {
         return [
-            'task' => $this->faker->realText($maxNbChars = 10, $indexSize = 2),
+            'task' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
             'user_id' => $this->faker->randomDigit,
         ];
     }

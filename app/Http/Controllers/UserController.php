@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Model\User;
 
-
-class TaskController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
-        $users = User::all();
-        return view('todo', ['users' => $users], ['tasks' => $tasks]);
+        // $users = User::all();
+        // return view('todo', compact('user'));
     }
 
     /**
