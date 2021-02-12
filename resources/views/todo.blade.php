@@ -16,6 +16,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
       <div class="container-fluid">
         <h1 class="text-white">My <small class="text-muted">todos</small></h1>
+        <button type="button" class="btn btn-primary">Add new task</button>
       </div>
     </nav>
   </div>
@@ -26,6 +27,7 @@
         <th scope="col">Id</th>
         <th scope="col">Task</th>
         <th scope="col">Name</th>
+        <th scope="col">Done</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
       </tr>
@@ -43,6 +45,9 @@
           @if ($task->user()->get()->first())
           {{ $task->user()->get()->first()->name }}
           @endif
+        </td>
+        <td>
+          <button type="button" class="btn btn-info">Done</button>
         </td>
         <td>
           <button type="button" class="btn btn-secondary">Edit</button>
