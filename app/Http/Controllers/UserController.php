@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\User;
+use App\Models\User;
+use App\Models\Task;
 
 class UserController extends Controller
 {
@@ -14,8 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $users = User::all();
-        // return view('todo', compact('user'));
+        $tasks = Task::all();
+        $users = User::all();
+        return view('todo', ['users' => $users], ['tasks' => $tasks]);
     }
 
     /**
