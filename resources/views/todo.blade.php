@@ -11,33 +11,51 @@
       <link href="css/app.css" rel="stylesheet">
   <title>My todo</title>
 </head>
-<body class="$blue">
-  <h1>My <small class="text-muted">todos</small></h1>
-  <table class="table table-sm word-wrap: break-word;min-width: 160px;max-width: 160px;">
+<body class="bg-white">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <div class="container-fluid">
+        <h1 class="text-white">My <small class="text-muted">todos</small></h1>
+      </div>
+    </nav>
+  </div>
+  <div class="container">
+  <table class="table">
     <thead class="table-dark">
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Task</th>
-        {{-- <th scope="col">Name</th> --}}
+        <th scope="col">Name</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="container">
       @foreach ($tasks as $task)
       <tr>
-        <td>
-          {{ $task->id }}
+        <td class="text-dark ">
+          {{ $task ['id'] }}
+        </td>
+        <td  class="text-dark ">
+          {{ $task ['task'] }}
+        </td>
+        <td class="text-dark ">
+          @if ($task->user()->get()->first())
+          {{ $task->user()->get()->first()->name }}
+          @endif
         </td>
         <td>
-          {{ $task->task }}
+          <button type="button" class="btn btn-secondary">Edit</button>
         </td>
-        {{-- <td>
-          {{ $task->name }}
-        </td> --}}
+        <td>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </td>
       </tr>
       @endforeach
     </tbody>
   </table>
-  <nav class="navbar fixed-bottom navbar-light bg-dark">
+  </div>
+  <nav class="navbar fixed-bottom navbar-light bg-dark container">
     <div class="container-fluid">
       <a class="navbar-brand text-white" href="mailto:otto.reimers@chasacademy.se">otto.reimers@chasacademy.se</a>
     </div>

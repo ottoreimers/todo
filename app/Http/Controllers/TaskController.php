@@ -28,7 +28,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('todo.create');
     }
 
     /**
@@ -39,7 +39,14 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'task' => 'required',
+            'user' => 'required',
+        ]);
+
+        Task::create($request->all());
+
+        return redirect()->route('todo.index')->with('success', 'Du skapade en post!');
     }
 
     /**
@@ -50,7 +57,7 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('todo.show', compact('todo'));
     }
 
     /**
@@ -61,7 +68,7 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('todo.edit', compact('todo'));
     }
 
     /**
@@ -73,7 +80,14 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'task' => 'required',
+            'user' => 'required',
+        ]);
+
+        $task->update($request->all());
+
+        return redirect()->route('todo.index')->with('success', 'Din post uppdaterades!');
     }
 
     /**
@@ -82,8 +96,11 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $id)
     {
-        //
+        // $task = Task::all();
+        $tasks->delete();
+
+        return redirect()->route('todo')->with('success', 'Din post raderades!');
     }
 }
